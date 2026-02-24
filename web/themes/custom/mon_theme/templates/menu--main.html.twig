@@ -1,0 +1,68 @@
+<header class="site-header">
+  <div class="header-container">
+    <div class="header-left">
+      <a href="/" class="logo-link">
+        <img src="/themes/custom/mon_theme/logo.jpg" alt="Logo" class="site-logo">
+      </a>
+    </div>
+
+    <nav class="header-nav">
+      {% import _self as menus %}
+      {{ menus.menu_links(items, attributes, 0) }}
+    </nav>
+
+    <div class="header-right">
+      <span class="header-icon">🔍</span>
+      <span class="header-icon">💬</span>
+      <div class="lang-selector">
+        <img src="https://flagcdn.com/w20/fr.png" alt="FR">
+        <span class="arrow-down">▾</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+{% if not is_front %}
+  {{ page.content }}
+{% endif %}
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  <ul class="nav-list">
+    {% for item in items %}
+      <li class="nav-item">
+        {% if item.below %}
+          <button class="nav-link-toggle">{{ item.title }} <span class="arrow">▾</span></button>
+          <div class="dropdown-panel">
+            <div class="dropdown-inner">
+              <div class="promo-content">
+                <h2 class="promo-title">Some long text in to the 2 lines</h2>
+                <a href="#" class="promo-link">Here is the link →</a>
+              </div>
+              <div class="software-grid">
+                {% for sub_item in item.below %}
+                  <a href="{{ sub_item.url }}" class="software-card">
+
+			{% if sub_item.image_url %}
+        <div class="card-image">
+          <img src="{{ sub_item.image_url }}" alt="{{ sub_item.title }}">
+        </div>
+      {% endif %}
+                    <div class="card-info">
+                      <span class="card-name">{{ sub_item.title }}</span>
+                      <p class="card-desc">{{ sub_item.description }}</p>
+                      <span class="card-more">Voir plus ></span>
+                    </div>
+                  </a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <a href="{{ item.url }}" class="nav-link-simple">{{ item.title }}</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro %}

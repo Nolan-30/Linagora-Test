@@ -1,0 +1,14 @@
+name: 'Mon Theme Figma'
+type: theme
+description: 'Theme sur mesure pour le test Linagora'
+package: Custom
+base theme: false
+core_version_requirement: ^10 || ^11
+
+libraries:
+  - mon_theme/global-styling
+
+regions:
+  header: 'Header'
+  content: 'Content'
+  footer: 'Footer'

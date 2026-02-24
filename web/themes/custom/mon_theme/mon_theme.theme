@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * Implements hook_preprocess_menu().
+ */
+function mon_theme_preprocess_menu(&$variables) {
+  // On cible le menu principal
+  if ($variables['menu_name'] === 'main') {
+    foreach ($variables['items'] as &$item) {
+      // Si l'élément de menu a des sous-éléments (ex: Logiciels)
+      if (!empty($item['below'])) {
+        foreach ($item['below'] as &$sub_item) {
+          
+          // On récupère l'objet "URL" du lien de menu
+          $url = $sub_item['url'];
+          
+          if ($url->isRouted()) {
+            $params = $url->getRouteParameters();
+            
+            // Si le lien pointe vers un nœud (une page)
+            if (isset($params['node'])) {
+              $node = \Drupal\node\Entity\Node::load($params['node']);
+              
+              if ($node) {
+                // 1. GESTION DE L'IMAGE
+                // On vérifie si le champ 'field_image' existe et n'est pas vide
+                if ($node->hasField('field_image') && !$node->get('field_image')->isEmpty()) {
+                  $file = $node->field_image->entity;
+                  // On génère l'URL de l'image de manière compatible
+                  $sub_item['image_url'] = \Drupal::service('file_url_generator')->generateString($file->getFileUri());
+                }
+
+                // 2. GESTION DE LA DESCRIPTION (Le texte sous le titre)
+                // On récupère le texte du champ 'body'
+                if ($node->hasField('body') && !$node->get('body')->isEmpty()) {
+                  // On prend le résumé (summary) s'il existe, sinon on coupe le texte à 100 caractères
+                  $description = $node->body->summary ?: $node->body->value;
+                  $sub_item['description'] = strip_tags($description); // On enlève le HTML pour garder du texte brut
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
