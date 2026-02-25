@@ -15,19 +15,39 @@ body {
 
 
 .header-container {
-  display: flex; 
-  justify-content: space-between; 
+  display: flex;
+  justify-content: flex-start; /* Cela pousse tout vers la gauche */
+  padding-left: 0; /* Pour enlever les marges par défaut */ 
   align-items: center; 
   width: 100%;
   max-width: 1400px;
-  margin: 0 auto;
   padding: 0 20px;
+
+
+}
+
+
+.header-left {
+  margin-right: 50px; /* pour mettre un espace entre le logo et le texte "IA" */
 }
 
 .header-right {
   display: flex;
   align-items: center;
   gap: 15px; /* Espace entre la loupe, le chat et le drapeau */
+  margin-left: auto;
+}
+
+/* Taille spécifique pour la loupe */
+.icon-search {
+  width: 45px; 
+  height: auto;
+}
+
+.header-icon {
+  width: 40px;
+  height: auto;
+  vertical-align: middle; /* Pour qu'elles soient bien alignées avec le texte */
 }
 
 
@@ -121,9 +141,11 @@ body {
 }
 
 .promo-link {
-  color: #3b82f6;
-  text-decoration: none;
-  font-weight: 500;
+ color: #ffffff !important; /* pour forcer le texte en blanc */
+ text-decoration: none;
+ font-weight: 500;
+ display: inline-block;
+ margin-top: 10px;
 }
 
 /* Grille de droite */
@@ -133,7 +155,63 @@ body {
   gap: 20px;
   flex-grow: 1;
 }
+/* Colonne de gauche */
+.promo-content {
+  flex: 0 0 300px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding-right: 40px;
+}
 
+.promo-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.promo-link {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+}/* Colonne de gauche */
+.promo-content {
+  flex: 0 0 300px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding-right: 40px;
+}
+
+.promo-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.promo-link {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Colonne de gauche */
+.promo-content {
+  flex: 0 0 300px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding-right: 40px;
+}
+
+.promo-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.promo-link {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+}
 .software-card {
   display: flex;
   gap: 15px;
@@ -176,7 +254,23 @@ body {
 }
 
 .card-more {
-  color: #3b82f6;
+  color: #ffffff !important; /* Force le blanc */
   font-size: 14px;
   font-weight: 500;
+}
+
+
+.logo-block {
+  margin-right: 40px; 
+}
+
+
+.content-left a {
+  color: #ffffff;
+  text-decoration: none; /
+}
+
+
+.service-card a {
+  color: #ffffff;
 }
