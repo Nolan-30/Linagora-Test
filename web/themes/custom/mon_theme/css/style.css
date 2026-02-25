@@ -1,3 +1,6 @@
+/********************/
+/*  Base et Layout */
+/********************/
 body {
   background-color: #0b0e14;
   color: white;
@@ -5,75 +8,60 @@ body {
   font-family: sans-serif;
 }
 
-
-
-.site-logo {
-  height: 35px; 
-  width: auto;
-  display: block;
-}
-
-
 .header-container {
   display: flex;
-  justify-content: flex-start; /* Cela pousse tout vers la gauche */
-  padding-left: 0; /* Pour enlever les marges par défaut */ 
-  align-items: center; 
+  justify-content: flex-start;
+  align-items: center;
   width: 100%;
   max-width: 1400px;
   padding: 0 20px;
-
-
 }
 
-
 .header-left {
-  margin-right: 50px; /* pour mettre un espace entre le logo et le texte "IA" */
+  margin-right: 80px;
+}
+
+.site-logo {
+  height: 35px;
+  width: auto;
+  display: block;
+  border-radius: 8px;
 }
 
 .header-right {
   display: flex;
   align-items: center;
-  gap: 15px; /* Espace entre la loupe, le chat et le drapeau */
+  gap: 15px;
   margin-left: auto;
 }
 
-/* Taille spécifique pour la loupe */
+/********************/
+/* Icônes et Header */
+/********************/
+
 .icon-search {
-  width: 45px; 
+  width: 45px;
   height: auto;
 }
-
 .header-icon {
   width: 40px;
   height: auto;
-  vertical-align: middle; /* Pour qu'elles soient bien alignées avec le texte */
+  vertical-align: middle;
 }
-
-
-.nav-item {
-  position: static; /* permet au menu de s'etaler sur tt l'ecran */
-}
-
 
 .nav-list {
   display: flex;
-  align-items: center; /* Aligne verticalement au centre par rapport au logo */
-  gap: 20px;           /* Espace régulier entre IA, Logiciels, OSSA... */
+  align-items: center;
+  gap: 20px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-
-
-.nav-link-simple, 
+.nav-link-simple,
 .nav-link-toggle {
-  color: #ffffff !important; /* Force le blanc pour enlever le violet */
+  color: #ffffff !important;
   text-decoration: none;
-  background: none;
-  border: none;
-  font-family: sans-serif; /* Ou la police de ta maquette */
   font-size: 15px;
   font-weight: 500;
   display: flex;
@@ -81,52 +69,52 @@ body {
   padding: 10px 5px;
   cursor: pointer;
   transition: color 0.3s;
-}
-
-/* Effet au survol pour tous les liens */
-.nav-link-simple:hover, 
-.nav-link-toggle:hover {
-  color: #3b82f6; /* Devient bleu comme sur la maquette */
-}
-
-.nav-link-toggle {
-  background: transparent;
-  color: white;
-  padding: 20px;
+  background: none;
   border: none;
-  cursor: pointer;
-  font-size: 16px;
 }
 
-.nav-item.is-open .nav-link-toggle {
-  background: #1a2332;
+.nav-link-simple:hover,
+.nav-link-toggle:hover {
   color: #3b82f6;
+}
+/********************/
+/*  Menu Déroulant */
+/********************/
+.nav-item {
+  position: static;
 }
 
 .dropdown-panel {
   display: none;
-  position: absolute; /* Il flotte au-dessus du reste */
-  top: 80px;         /* Juste en dessous du header noir */
-  left: 0;           /* On le force à démarrer tout à gauche de l'écran */
-  width: 100vw;      /* On lui donne 100% de la largeur de l'écran */
+  position: absolute;
+  top: 100%; /* permet de coller le menu sous le header */
+  left: 0;
+  width: 100vw;
   background: #1a2332;
   z-index: 1000;
-  border-bottom: 3px solid #3b82f6;
 }
 
 .nav-item.is-open .dropdown-panel {
   display: block;
 }
 
+/* le txt "logiciels" passe en bleu qd il est cliqué */
+.nav-item.is-open .nav-link-toggle {
+  background-color: #1a2332 !important;
+}
+
 .dropdown-inner {
   display: flex;
-  max-width: 1200px; /* On limite la largeur */
-  margin: 0 auto;    /* On centre le bloc de contenu */
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 40px 20px;
   gap: 40px;
 }
 
+/**********************/
 /* Colonne de gauche */
+/********************/
+
 .promo-content {
   flex: 0 0 300px;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
@@ -138,86 +126,34 @@ body {
   font-weight: bold;
   margin-bottom: 20px;
   line-height: 1.2;
+  color: #9ca3af;
 }
 
 .promo-link {
- color: #ffffff !important; /* pour forcer le texte en blanc */
- text-decoration: none;
- font-weight: 500;
- display: inline-block;
- margin-top: 10px;
+  color: #ffffff !important; /* on force en blanc */
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block; /* Permet d'appliquer des marges tt en restant sur la ligne */
+  margin-top: 10px;
 }
 
-/* Grille de droite */
+/***********************/
+/** Grille Logiciels **/
+/*********************/
+
 .software-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr); /* ca creer 2 colonnes egales */
   gap: 20px;
   flex-grow: 1;
 }
-/* Colonne de gauche */
-.promo-content {
-  flex: 0 0 300px;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  padding-right: 40px;
-}
 
-.promo-title {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  line-height: 1.2;
-}
-
-.promo-link {
-  color: #3b82f6;
-  text-decoration: none;
-  font-weight: 500;
-}/* Colonne de gauche */
-.promo-content {
-  flex: 0 0 300px;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  padding-right: 40px;
-}
-
-.promo-title {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  line-height: 1.2;
-}
-
-.promo-link {
-  color: #3b82f6;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-/* Colonne de gauche */
-.promo-content {
-  flex: 0 0 300px;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  padding-right: 40px;
-}
-
-.promo-title {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  line-height: 1.2;
-}
-
-.promo-link {
-  color: #3b82f6;
-  text-decoration: none;
-  font-weight: 500;
-}
 .software-card {
   display: flex;
   gap: 15px;
   background: rgba(255, 255, 255, 0.05);
   padding: 20px;
-  border-radius: 12px;
+  border-radius: 12px; /* arrondies */
   text-decoration: none;
   transition: 0.3s;
 }
@@ -234,43 +170,25 @@ body {
   object-fit: cover;
 }
 
-.card-info {
-  display: flex;
-  flex-direction: column;
-}
-
 .card-name {
   color: white;
   font-weight: bold;
   font-size: 18px;
   margin-bottom: 4px;
 }
-
 .card-desc {
   color: #9ca3af;
   font-size: 14px;
   margin: 0 0 10px 0;
   line-height: 1.4;
 }
-
 .card-more {
-  color: #ffffff !important; /* Force le blanc */
+  color: #ffffff !important; /* on force en blanc */
   font-size: 14px;
   font-weight: 500;
 }
 
-
-.logo-block {
-  margin-right: 40px; 
-}
-
-
-.content-left a {
-  color: #ffffff;
-  text-decoration: none; /
-}
-
-
-.service-card a {
-  color: #ffffff;
+/* pr cacher l'icone de crayon en haut a droite */
+.contextual {
+  display: none !important;
 }
