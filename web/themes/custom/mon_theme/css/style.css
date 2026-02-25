@@ -188,6 +188,21 @@ body {
   font-weight: 500;
 }
 
+/* Responsivité */
+
+/* ajustements pour les écrans entre 1024px et 1200px */
+@media screen and (max-width: 1200px) {
+  .promo-content {
+    flex: 0 0 220px; /* reduction de la largeur du texte à gauche */
+    padding-right: 20px;
+  }
+
+  .dropdown-inner {
+    max-width: 95% !important;
+    gap: 20px; /* reduction des espaces */
+  }
+}
+
 /* pr cacher l'icone de crayon en haut a droite */
 .contextual {
   display: none !important;

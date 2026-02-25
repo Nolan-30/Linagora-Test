@@ -1,16 +1,16 @@
-
 /* Cache le panneau par défaut */
 .dropdown-panel {
   display: none;
   position: absolute;
-  top: 100%; left: 0;
+  top: 100%;
+  left: 0;
   width: 100vw;
   background: #1a2332; /* Le bleu de la maquette */
   padding: 50px;
   z-index: 999;
 }
 
-/* Affiche le panneau seulement quand la classe .is-open est là (ajoutée par le JS) */
+/* Affiche le panneau seulement quand la classe .is-open est là (*/
 .nav-item.is-open .dropdown-panel {
   display: block;
 }
